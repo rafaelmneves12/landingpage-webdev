@@ -50,7 +50,7 @@ export function Header() {
             <Sparkles className="h-4 w-4 text-primary" />
           </span>
           <span className="font-display text-base font-semibold tracking-tight text-foreground">
-            Rafael Neves
+            Rafael Neves <span className="text-muted-foreground font-normal">| Sites Profissionais</span>
           </span>
         </a>
 
