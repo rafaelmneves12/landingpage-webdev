@@ -4,6 +4,7 @@ import { Hero } from "@/components/landing/Hero";
 import { About } from "@/components/landing/About";
 import { Process } from "@/components/landing/Process";
 import { Incluso } from "@/components/landing/Incluso";
+import { Orcamento } from "@/components/landing/Orcamento";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -17,11 +18,12 @@ function Index() {
       <About />
       <Process />
       <Incluso />
-      {/* Próximas seções: Orçamento, Contato */}
-      <section id="orcamento" className="min-h-[20vh]" />
+      <Orcamento />
+      {/* Próxima seção: Contato */}
       <section id="contato" className="min-h-[20vh]" />
     </main>
   );
 }
+
 
 
