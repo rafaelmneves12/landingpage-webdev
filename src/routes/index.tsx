@@ -3,6 +3,7 @@ import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { About } from "@/components/landing/About";
 import { Process } from "@/components/landing/Process";
+import { Incluso } from "@/components/landing/Incluso";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -15,11 +16,12 @@ function Index() {
       <Hero />
       <About />
       <Process />
-      {/* Próximas seções: Incluso, Orçamento, Contato */}
-      <section id="incluso" className="min-h-[20vh]" />
+      <Incluso />
+      {/* Próximas seções: Orçamento, Contato */}
       <section id="orcamento" className="min-h-[20vh]" />
       <section id="contato" className="min-h-[20vh]" />
     </main>
   );
 }
+
 
