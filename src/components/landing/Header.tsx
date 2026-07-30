@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 const NAV_LINKS = [
   { href: "#sobre", label: "Sobre" },
   { href: "#processo", label: "Processo" },
-  { href: "#incluso", label: "O que está incluso" },
+  { href: "#incluso", label: "Benefícios" },
   { href: "#orcamento", label: "Orçamento" },
   { href: "#contato", label: "Contato" },
 ];
@@ -40,49 +40,50 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <a
           href="#top"
           onClick={(e) => handleClick(e, "#top")}
-          className="group flex items-center gap-2"
+          className="group flex min-w-0 items-center gap-2"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15 ring-1 ring-primary/40">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/15 ring-1 ring-primary/40">
             <Sparkles className="h-4 w-4 text-primary" />
           </span>
           <span className="truncate font-display text-sm font-semibold tracking-tight text-foreground sm:text-base">
             Rafael Neves{" "}
-            <span className="hidden font-normal text-muted-foreground sm:inline">
+            <span className="hidden font-normal text-muted-foreground xl:inline">
               | Sites Profissionais
             </span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden shrink-0 items-center gap-5 md:flex lg:gap-8">
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={(e) => handleClick(e, l.href)}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="whitespace-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden shrink-0 md:block">
           <a
             href="#orcamento"
             onClick={(e) => handleClick(e, "#orcamento")}
-            className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-[1.03] hover:brightness-110"
+            className="inline-flex items-center whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-[1.03] hover:brightness-110 lg:px-4"
           >
-            Solicitar Orçamento
+            <span className="lg:hidden">Orçamento</span>
+            <span className="hidden lg:inline">Solicitar Orçamento</span>
           </a>
         </div>
 
         <button
           aria-label="Abrir menu"
-          className="inline-flex items-center justify-center rounded-md p-2 text-foreground md:hidden"
+          className="inline-flex shrink-0 items-center justify-center rounded-md p-2 text-foreground md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
