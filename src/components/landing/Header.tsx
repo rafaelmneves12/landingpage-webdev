@@ -40,7 +40,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <a
           href="#top"
           onClick={(e) => handleClick(e, "#top")}
@@ -49,8 +49,11 @@ export function Header() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15 ring-1 ring-primary/40">
             <Sparkles className="h-4 w-4 text-primary" />
           </span>
-          <span className="font-display text-base font-semibold tracking-tight text-foreground">
-            Rafael Neves <span className="text-muted-foreground font-normal">| Sites Profissionais</span>
+          <span className="truncate font-display text-sm font-semibold tracking-tight text-foreground sm:text-base">
+            Rafael Neves{" "}
+            <span className="hidden font-normal text-muted-foreground sm:inline">
+              | Sites Profissionais
+            </span>
           </span>
         </a>
 

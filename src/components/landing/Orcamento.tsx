@@ -211,7 +211,7 @@ export function Orcamento() {
           {...fadeInUp}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           onSubmit={handleSubmit(onSubmit)}
-          className="mt-12 space-y-8 rounded-3xl border border-border/60 bg-card/40 p-6 backdrop-blur sm:p-8 lg:p-10"
+          className="mt-12 space-y-8 rounded-3xl border border-border/60 bg-card/40 p-4 backdrop-blur sm:p-8 lg:p-10"
           noValidate
         >
           {/* Name */}
@@ -224,7 +224,7 @@ export function Orcamento() {
               type="text"
               placeholder="Ex: João Silva"
               {...register("name")}
-              className="w-full rounded-xl border border-border/80 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none ring-offset-background transition-all focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border/80 bg-background/60 px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground/60 outline-none ring-offset-background transition-all focus:border-primary/60 focus:ring-2 focus:ring-primary/20 sm:text-sm"
             />
             {errors.name && (
               <p className="text-xs text-destructive">{errors.name.message}</p>
@@ -240,7 +240,7 @@ export function Orcamento() {
               {BUSINESS_OPTIONS.map((option) => (
                 <label
                   key={option.value}
-                  className={`relative flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
+                  className={`relative flex min-h-[56px] cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
                     businessType === option.value
                       ? "border-primary/70 bg-primary/15 text-foreground"
                       : "border-border/60 bg-card/40 text-muted-foreground hover:border-primary/40 hover:bg-card/60"
@@ -296,7 +296,7 @@ export function Orcamento() {
               {SITE_OPTIONS.map((option) => (
                 <label
                   key={option.value}
-                  className={`relative flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
+                  className={`relative flex min-h-[56px] cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
                     siteTypes.includes(option.value)
                       ? "border-primary/70 bg-primary/15 text-foreground"
                       : "border-border/60 bg-card/40 text-muted-foreground hover:border-primary/40 hover:bg-card/60"
@@ -352,7 +352,7 @@ export function Orcamento() {
               {CONTENT_OPTIONS.map((option) => (
                 <label
                   key={option.value}
-                  className={`relative flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
+                  className={`relative flex min-h-[56px] cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all ${
                     watch("content") === option.value
                       ? "border-primary/70 bg-primary/15 text-foreground"
                       : "border-border/60 bg-card/40 text-muted-foreground hover:border-primary/40 hover:bg-card/60"
@@ -387,7 +387,7 @@ export function Orcamento() {
               type="text"
               placeholder="https://seusite.com"
               {...register("currentSite")}
-              className="w-full rounded-xl border border-border/80 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none ring-offset-background transition-all focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border/80 bg-background/60 px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground/60 outline-none ring-offset-background transition-all focus:border-primary/60 focus:ring-2 focus:ring-primary/20 sm:text-sm"
             />
             {errors.currentSite && (
               <p className="text-xs text-destructive">
