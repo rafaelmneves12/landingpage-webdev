@@ -3,6 +3,7 @@ import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { TrustBar } from "@/components/landing/TrustBar";
 import { About } from "@/components/landing/About";
+import { Projects } from "@/components/landing/Projects";
 import { Process } from "@/components/landing/Process";
 import { Incluso } from "@/components/landing/Incluso";
 import { Orcamento } from "@/components/landing/Orcamento";
@@ -68,6 +69,7 @@ function Index() {
       <Hero />
       <TrustBar />
       <About />
+      <Projects />
       <Process />
       <Incluso />
       <Orcamento />

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 const NAV_LINKS = [
   { href: "#sobre", label: "Sobre" },
+  { href: "#projetos", label: "Projetos" },
   { href: "#processo", label: "Processo" },
   { href: "#incluso", label: "Benefícios" },
   { href: "#orcamento", label: "Orçamento" },
