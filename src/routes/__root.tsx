@@ -77,21 +77,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Rafael Neves — Desenvolvedor Front-End Freelancer" },
+      { title: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
       {
         name: "description",
         content:
-          "Sites profissionais, landing pages e catálogos digitais em React, TypeScript e Tailwind — foco em performance, design moderno e conversão.",
+          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       { name: "author", content: "Rafael Neves" },
-      { property: "og:title", content: "Rafael Neves — Desenvolvedor Front-End Freelancer" },
+      { property: "og:title", content: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
       {
         property: "og:description",
         content:
-          "Sites que geram resultado. Atendimento direto, sem intermediários. Solicite seu orçamento agora.",
+          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
+      { name: "twitter:description", content: "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dfef7125-c483-4ef5-876d-725e9ad60bc8/id-preview-b393bf5a--17144555-38fe-4666-9b52-7c05b01c2e71.lovable.app-1785496768468.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dfef7125-c483-4ef5-876d-725e9ad60bc8/id-preview-b393bf5a--17144555-38fe-4666-9b52-7c05b01c2e71.lovable.app-1785496768468.png" },
     ],
     links: [
       {

@@ -27,12 +27,12 @@ export const Route = createFileRoute("/")({
       {
         property: "og:title",
         content:
-          "Rafael Neves — Desenvolvedor Front-End Freelancer, criação de sites profissionais",
+          "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites",
       },
       {
         property: "og:description",
         content:
-          "Sites que geram resultado para o seu negócio. Atendimento direto, sem intermediários, com 7 dias de garantia. Solicite um orçamento sem compromisso.",
+          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
