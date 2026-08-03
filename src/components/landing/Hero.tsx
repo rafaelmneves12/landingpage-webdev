@@ -1,12 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import rafaelPhoto from "@/assets/rafael-neves.jpg";
-
-const STATS = [
-  { value: "2+", label: "Anos de experiência" },
-  { value: "3+", label: "Projetos entregues" },
-  { value: "2+", label: "Clientes atendidos" },
-];
+import rafaelPhoto from "@/assets/rafael-neves.png";
 
 function smoothTo(hash: string) {
   const el = document.querySelector(hash);
@@ -62,9 +56,7 @@ export function Hero() {
           >
             Sou <span className="text-foreground">Rafael Neves</span>, Desenvolvedor
             Front-End especializado em criar sites institucionais, landing pages,
-            one-pages, cardápios digitais e catálogos digitais com{" "}
-            <span className="text-foreground">React, TypeScript e Tailwind CSS</span>
-            {" "}— com foco em performance, design moderno e conversão.
+            one-pages, blogs com React, TypeScript e Tailwind CSS.
           </motion.p>
 
           <motion.div
@@ -98,24 +90,6 @@ export function Hero() {
             Atendimento direto, sem intermediários — contrato claro, sem letras miúdas
           </motion.div>
 
-          <motion.dl
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="mt-10 grid max-w-md grid-cols-3 gap-4"
-          >
-            {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-xl border border-border/60 bg-card/40 p-4 backdrop-blur"
-              >
-                <dt className="text-2xl font-bold text-foreground">{s.value}</dt>
-                <dd className="mt-1 text-[11px] leading-tight text-muted-foreground">
-                  {s.label}
-                </dd>
-              </div>
-            ))}
-          </motion.dl>
         </div>
 
         {/* Portrait */}

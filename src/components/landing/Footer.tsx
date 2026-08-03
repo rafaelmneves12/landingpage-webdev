@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const NAV = [
@@ -10,9 +10,8 @@ const NAV = [
 ];
 
 const SOCIALS = [
-  { icon: Github, href: "https://github.com/rafaelmneves12", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/rafael-mattos-neves-97a180274", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:rafaelnevesrj12@gmail.com", label: "Email" },
+  { icon: Mail, href: "mailto:rafaelneves.devweb@gmail.com", label: "Email" },
   { icon: WhatsAppIcon, href: "https://wa.me/5521977072215", label: "WhatsApp" },
 ];
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Calendar,
@@ -8,9 +8,38 @@ import {
   Eye,
   X,
 } from "lucide-react";
-import importsgtts from "@/assets/projeto-importsgtts.jpg";
-import zenavra from "@/assets/projeto-zenavra.jpg";
-import institucional from "@/assets/projeto-institucional.jpg";
+import importsgtts from "@/assets/importsgtts-thumbnail.png";
+import importsgtts1 from "@/assets/importsgtts-picture-1.png";
+
+import zenavra from "@/assets/zenavra-thumbnail.png";
+import zenavra1 from "@/assets/zenavra-picture-1.png";
+import zenavra2 from "@/assets/zenavra-picture-2.png";
+
+import rayaneSocialMidia from "@/assets/portifolio-thumbnail.png";
+import rayaneSocialMidia1 from "@/assets/portifolio-picture-1.png";
+
+import rafaelPortifolio from "@/assets/rafael-portifolio-thumbnail.png";
+import rafaelPortifolio1 from "@/assets/rafael-portifolio-picture-1.png";
+
+import saborEmCasaBlog from "@/assets/culinaria-thumbnail.png";
+import saborEmCasaBlog1 from "@/assets/culinaria-picture-1.png";
+import saborEmCasaBlog2 from "@/assets/culinaria-picture-2.png";
+import saborEmCasaBlog3 from "@/assets/culinaria-picture-3.png";
+import saborEmCasaBlog4 from "@/assets/culinaria-picture-4.png";
+import saborEmCasaBlog5 from "@/assets/culinaria-picture-5.png";
+
+import vaultCripto from "@/assets/vault-thumbnail.png";
+import vaultCripto1 from "@/assets/vault-picture-1.png";
+import vaultCripto2 from "@/assets/vault-picture-2.png";
+import vaultCripto3 from "@/assets/vault-picture-3.png";
+import vaultCripto4 from "@/assets/vault-picture-4.png";
+import vaultCripto5 from "@/assets/vault-picture-5.png";
+import vaultCripto6 from "@/assets/vault-picture-6.png";
+
+import clinicaEstetica from "@/assets/clinica-estetica-thumbnail.png";
+import clinicaEstetica1 from "@/assets/clinica-estetica-picture-1.png";
+
+
 
 export type Project = {
   id: string;
@@ -27,6 +56,103 @@ export type Project = {
 
 const PROJECTS: Project[] = [
   {
+    id: "clinica-estetica",
+    title: "Landing Page para Clinica de Estética",
+    tag: "React",
+    date: "Ago 2026",
+    cover: clinicaEstetica,
+    description:
+      "Landing Page moderna e totalmente responsivo para clínica de estética, desenvolvido para fortalecer a presença digital da marca, apresentar os tratamentos de forma estratégica e proporcionar uma experiência sofisticada focada em conversão de novos clientes.",
+    highlights: [
+      "Design sofisticado com identidade visual elegante para a marca",
+      "Apresentação completa da clínica, equipe, tratamentos e resultados",
+      "Galeria de imagens e cards comparativos de antes e depois",
+      "Sessão de avaliações reais para fortalecer a credibilidade da marca",
+      "Cards detalhados com informações sobre cada procedimento",
+      "Integração direta com WhatsApp para atendimento rápido",
+      "FAQ e formulário de contato para geração de novos leads",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://aureaclinicprofessional.vercel.app/",
+    gallery: [clinicaEstetica1],
+  },
+  {
+    id: "sabor-em-casa-blog",
+    title: "Blog Culinário de Receitas",
+    tag: "React",
+    date: "Ago 2026",
+    cover: saborEmCasaBlog,
+    description:
+      "Blog culinário moderno e totalmente responsivo, desenvolvido para proporcionar uma navegação intuitiva entre receitas, categorias e conteúdos gastronômicos, oferecendo uma experiência agradável tanto para leitores quanto para apaixonados por culinária.",
+    highlights: [
+      "Sistema de categorias e filtros para facilitar a busca por receitas",
+      "Receitas completas com ingredientes e modo de preparo detalhado",
+      "Integração com vídeos do YouTube para acompanhamento do preparo",
+      "Página institucional apresentando a história e propósito do blog",
+      "Design leve, moderno e agradável com tema claro",
+      "Carregamento rápido e navegação intuitiva"
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://blogculinariaprofessional.vercel.app/",
+    gallery: [saborEmCasaBlog1, saborEmCasaBlog2, saborEmCasaBlog3, saborEmCasaBlog4, saborEmCasaBlog5],
+  },
+  {
+    id: "vault-cripto",
+    title: "Plataforma Web para Gestão e Monitoramento de Criptomoedas",
+    tag: "React",
+    date: "Jul 2026",
+    cover: vaultCripto,
+    description:
+      "Plataforma multipáginas desenvolvida para investidores de criptomoedas, oferecendo monitoramento em tempo real do mercado, gerenciamento de portfólio e análise de ativos através de consumo de API REST, com foco em desempenho, segurança e experiência do usuário.",
+    highlights: [
+      "Consumo de API REST para atualização em tempo real do mercado",
+      "Sistema completo de autenticação com Login e Registro",
+      "Dashboard privado para gerenciamento dos investimentos",
+      "Portfólio personalizado com controle de ativos, valores investidos e patrimônio",
+      "Watchlist para acompanhamento das criptomoedas favoritas",
+      "Análise de volatilidade e desempenho do mercado em tempo real",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://vaultcriptoprofessional.vercel.app/",
+    gallery: [vaultCripto1, vaultCripto2, vaultCripto3, vaultCripto4, vaultCripto5, vaultCripto6],
+  },
+  {
+    id: "rayane-social-media",
+    title: "Landing Page para Social Midia",
+    tag: "React",
+    date: "Jul 2026",
+    cover: rayaneSocialMidia,
+    description:
+      "Landing page moderna e totalmente responsiva para Social Media, desenvolvida com foco em captação de clientes, experiência do usuário e alta conversão.",
+    highlights: [
+      "Desenvolvimento de textos estratégicos para conversão",
+      "Paleta de cores personalizada e tipografia elegante e profissional",
+      "Apresentação de números estratégicos e indicadores do negócio",
+      "Otimização de desempenho com carregamento rápido e experiência fluida",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://portifolio-premium-social-media.vercel.app/",
+    gallery: [rayaneSocialMidia1],
+  },
+  {
+    id: "rafael-portifolio",
+    title: "One Page para Portifólio Profissional",
+    tag: "React",
+    date: "Jul 2026",
+    cover: rafaelPortifolio,
+    description:
+      "Portfólio profissional moderno em tema dark, desenvolvido para destacar a trajetória, competências e projetos do profissional com design sofisticado e foco em credibilidade.",
+    highlights: [
+      "Header lateral com navegação intuitiva",
+      "Área inicial de apresentação com destaque para o perfil profissional",
+      "Seção de certificados e qualificações profissionais",
+      "Área com nível de proficiência em idiomas",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://premium-portfolio-base.vercel.app/",
+    gallery: [rafaelPortifolio1],
+  },
+  {
     id: "importsgtts",
     title: "Ecommerce de Moda Masculina (ImportsGtts)",
     tag: "WordPress",
@@ -35,15 +161,14 @@ const PROJECTS: Project[] = [
     description:
       "Website moderno e totalmente responsivo em WooCommerce, voltado ao segmento de moda masculina, com abordagem mobile-first e foco em conversão.",
     highlights: [
-      "Layout mobile-first e totalmente responsivo",
       "WooCommerce customizado com Elementor",
       "Integração com gateways de pagamento",
       "Banners estratégicos e otimização de conversão",
       "Alto desempenho de carregamento",
     ],
     technologies: ["WordPress", "WooCommerce", "Elementor", "CSS"],
-    url: "https://importsgtts.com.br",
-    gallery: [importsgtts, zenavra],
+    url: "",
+    gallery: [importsgtts1],
   },
   {
     id: "zenavra",
@@ -54,34 +179,14 @@ const PROJECTS: Project[] = [
     description:
       "Loja virtual moderna e responsiva em Shopify, voltada para o segmento de beleza feminina, com navegação intuitiva e experiência de compra premium.",
     highlights: [
-      "Design responsivo e mobile-first",
       "UI/UX moderna e carregamento otimizado",
       "Páginas de produtos personalizadas",
       "Variantes e amostras de cores (swatches)",
       "Formulários de contato e FAQs",
     ],
     technologies: ["Shopify", "Liquid", "CSS", "Apps"],
-    url: "https://zenavra.com",
-    gallery: [zenavra, importsgtts],
-  },
-  {
-    id: "institucional",
-    title: "Site Institucional Corporativo",
-    tag: "React",
-    date: "Fev 2026",
-    cover: institucional,
-    description:
-      "Site institucional one-page desenvolvido em React e Tailwind CSS, com estrutura otimizada para SEO e captação de contatos via WhatsApp.",
-    highlights: [
-      "Desenvolvimento em React + TypeScript",
-      "Estrutura semântica e SEO básico",
-      "Animações suaves com motion",
-      "Integração direta com WhatsApp",
-      "Publicação e configuração de domínio",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
-    url: "https://example.com",
-    gallery: [institucional],
+    url: "",
+    gallery: [zenavra1, zenavra2],
   },
 ];
 
@@ -93,6 +198,7 @@ function GalleryModal({
   onClose: () => void;
 }) {
   const [index, setIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const total = project.gallery.length;
 
   const next = useCallback(() => setIndex((i) => (i + 1) % total), [total]);
@@ -116,6 +222,12 @@ function GalleryModal({
     };
   }, [onClose, next, prev]);
 
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 639px)").matches) {
+      scrollContainerRef.current?.scrollTo({ top: 0 });
+    }
+  }, [index]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -134,7 +246,7 @@ function GalleryModal({
         exit={{ opacity: 0, scale: 0.96, y: 12 }}
         transition={{ duration: 0.22, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
-        className="flex h-full max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl"
+        className="flex h-[88dvh] max-h-[44rem] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl sm:h-full sm:max-h-[92vh]"
       >
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border/60 px-4 py-3 sm:px-6">
           <h3 className="min-w-0 truncate font-display text-sm font-semibold text-foreground sm:text-base">
@@ -149,7 +261,10 @@ function GalleryModal({
           </button>
         </div>
 
-        <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain bg-background/40">
+        <div
+          ref={scrollContainerRef}
+          className="relative min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain bg-background/40 [-webkit-overflow-scrolling:touch]"
+        >
           <AnimatePresence mode="wait">
             <motion.img
               key={index}
@@ -235,7 +350,7 @@ export function Projects() {
             transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
             className="mt-5 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl"
           >
-            Projetos que já <span className="text-gradient-blue">entreguei</span>
+            Meus projetos <span className="text-gradient-blue">recentes</span>
           </motion.h2>
 
           <motion.p
@@ -245,8 +360,7 @@ export function Projects() {
             transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
             className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Alguns dos trabalhos desenvolvidos com foco em performance, design e
-            resultado real para o negócio do cliente.
+            Alguns dos meus trabalhos desenvolvidos ao decorrer da minha carreira.
           </motion.p>
         </div>
 
@@ -308,7 +422,7 @@ export function Projects() {
                   ))}
                 </ul>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 mb-4 flex flex-wrap gap-2">
                   {project.technologies.map((t) => (
                     <span
                       key={t}
@@ -319,7 +433,7 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className="mt-5 flex items-center justify-between gap-3 border-t border-border/60 pt-4">
+                <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/60 pt-4">
                   <a
                     href={project.url}
                     target="_blank"

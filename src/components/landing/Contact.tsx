@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Github, Linkedin, ShieldCheck, Clock, BadgeCheck } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, ShieldCheck, Clock, BadgeCheck } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const WA_URL = "https://wa.me/5521977072215";
-const EMAIL = "rafaelnevesrj12@gmail.com";
+const EMAIL = "rafaelneves.devweb@gmail.com";
 
 const trust = [
   { icon: BadgeCheck, label: "Atendimento verificado" },
@@ -16,7 +16,6 @@ const contacts = [
   { icon: Mail, label: EMAIL, href: `mailto:${EMAIL}` },
   { icon: MapPin, label: "Rio de Janeiro, Brasil" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/rafael-mattos-neves-97a180274" },
-  { icon: Github, label: "GitHub", href: "https://github.com/rafaelmneves12" },
 ];
 
 export function Contact() {
@@ -34,7 +33,7 @@ export function Contact() {
             Vamos construir o site do <span className="text-gradient-blue">seu negócio</span>?
           </h2>
           <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-            Estou disponível para novos projetos e respondo rapidamente. Escolha o canal que preferir — sem compromisso.
+            Estou disponível para novos projetos e respondo rapidamente. Escolha o canal que preferir.
           </p>
         </motion.div>
 

@@ -14,8 +14,7 @@ const ITEMS = [
   "Otimização de imagens",
   "Testes em diferentes navegadores e dispositivos",
   "Publicação do site",
-  "Suporte após a entrega",
-  "7 dias de garantia para correção de eventuais problemas",
+  "Suporte após entrega de 7 dias",
 ];
 
 const fadeInUp = {

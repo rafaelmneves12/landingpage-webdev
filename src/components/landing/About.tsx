@@ -67,11 +67,9 @@ export function About() {
           transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
           className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Sou desenvolvedor Front-End especializado em React, TypeScript e
-          Tailwind CSS, com experiência também em WordPress. Trato cada
-          projeto como um produto completo — pensando em performance,
-          design, usabilidade e resultado real para o negócio do cliente,
-          não apenas em entregar um site bonito.
+          Especialista em React e WordPress. Crio soluções digitais de alta
+          performance focadas em usabilidade, conversão e resultado real para o
+          seu negócio.
         </motion.p>
 
         <motion.div

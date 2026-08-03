@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
-import { TrustBar } from "@/components/landing/TrustBar";
 import { About } from "@/components/landing/About";
 import { Projects } from "@/components/landing/Projects";
 import { Process } from "@/components/landing/Process";
@@ -50,7 +49,7 @@ export const Route = createFileRoute("/")({
             "Criação de sites institucionais, landing pages, cardápios e catálogos digitais com React, TypeScript e Tailwind CSS.",
           areaServed: "Brasil",
           telephone: "+55 21 97707-2215",
-          email: "rafaelnevesrj12@gmail.com",
+          email: "rafaelneves.devweb@gmail.com",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Rio de Janeiro",
@@ -67,7 +66,6 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       <Header />
       <Hero />
-      <TrustBar />
       <About />
       <Projects />
       <Process />
