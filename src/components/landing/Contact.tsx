@@ -8,7 +8,7 @@ const EMAIL = "rafaelneves.devweb@gmail.com";
 const trust = [
   { icon: BadgeCheck, label: "Atendimento verificado" },
   { icon: Clock, label: "Resposta em até 24h" },
-  { icon: ShieldCheck, label: "Sem compromisso no orçamento" },
+  { icon: ShieldCheck, label: "Orçamento sem compromisso" },
 ];
 
 const contacts = [

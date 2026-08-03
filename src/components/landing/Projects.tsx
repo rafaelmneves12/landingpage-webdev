@@ -97,6 +97,51 @@ const PROJECTS: Project[] = [
     gallery: [saborEmCasaBlog1, saborEmCasaBlog2, saborEmCasaBlog3, saborEmCasaBlog4, saborEmCasaBlog5],
   },
   {
+    id: "rayane-social-media",
+    title: "Landing Page para Social Midia",
+    tag: "React",
+    date: "Jul 2026",
+    cover: rayaneSocialMidia,
+    description:
+      "Landing page moderna e totalmente responsiva para Social Media, desenvolvida com foco em captação de clientes, experiência do usuário e alta conversão.",
+    highlights: [
+      "Design moderno com tema claro e paleta de cores personalizada",
+      "Apresentação profissional com sessão Sobre Mim, foto e descrição",
+      "Galeria dos trabalhos mais recentes para demonstrar experiência",
+      "Exibição de insights e resultados reais obtidos em projetos",
+      "Sessão de avaliações autênticas para fortalecer a credibilidade",
+      "Área dedicada às ferramentas e plataformas utilizadas no dia a dia",
+      "Integração direta com WhatsApp para atendimento imediato",
+      "Chamada para ação (CTA) estratégica para geração de novos clientes",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://portifolio-premium-social-media.vercel.app/",
+    gallery: [rayaneSocialMidia1],
+  },
+  {
+    id: "rafael-portifolio",
+    title: "One Page para Portifólio Profissional",
+    tag: "React",
+    date: "Jul 2026",
+    cover: rafaelPortifolio,
+    description:
+      "Portfólio profissional moderno em tema dark, desenvolvido para destacar a trajetória, competências e projetos do profissional com design sofisticado e foco em credibilidade.",
+    highlights: [
+      "Design moderno com tema Dark e identidade visual tecnológica",
+      "Header lateral (Sidebar) com navegação por menu âncora animado",
+      "Sessão principal com apresentação profissional e foto de destaque",
+      "Botão para download do currículo integrado ao site",
+      "Ícones de redes sociais com links para os principais canais profissionais",
+      "Exibição das tecnologias utilizadas com níveis de proficiência",
+      "Galeria de projetos desenvolvidos com informações e tecnologias aplicadas",
+      "Área dedicada a certificados profissionais e cursos concluídos",
+      "Sessão de idiomas com níveis de proficiência apresentados de forma visual",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
+    url: "https://premium-portfolio-base.vercel.app/",
+    gallery: [rafaelPortifolio1],
+  },
+  {
     id: "vault-cripto",
     title: "Plataforma Web para Gestão e Monitoramento de Criptomoedas",
     tag: "React",
@@ -115,42 +160,6 @@ const PROJECTS: Project[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
     url: "https://vaultcriptoprofessional.vercel.app/",
     gallery: [vaultCripto1, vaultCripto2, vaultCripto3, vaultCripto4, vaultCripto5, vaultCripto6],
-  },
-  {
-    id: "rayane-social-media",
-    title: "Landing Page para Social Midia",
-    tag: "React",
-    date: "Jul 2026",
-    cover: rayaneSocialMidia,
-    description:
-      "Landing page moderna e totalmente responsiva para Social Media, desenvolvida com foco em captação de clientes, experiência do usuário e alta conversão.",
-    highlights: [
-      "Desenvolvimento de textos estratégicos para conversão",
-      "Paleta de cores personalizada e tipografia elegante e profissional",
-      "Apresentação de números estratégicos e indicadores do negócio",
-      "Otimização de desempenho com carregamento rápido e experiência fluida",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://portifolio-premium-social-media.vercel.app/",
-    gallery: [rayaneSocialMidia1],
-  },
-  {
-    id: "rafael-portifolio",
-    title: "One Page para Portifólio Profissional",
-    tag: "React",
-    date: "Jul 2026",
-    cover: rafaelPortifolio,
-    description:
-      "Portfólio profissional moderno em tema dark, desenvolvido para destacar a trajetória, competências e projetos do profissional com design sofisticado e foco em credibilidade.",
-    highlights: [
-      "Header lateral com navegação intuitiva",
-      "Área inicial de apresentação com destaque para o perfil profissional",
-      "Seção de certificados e qualificações profissionais",
-      "Área com nível de proficiência em idiomas",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://premium-portfolio-base.vercel.app/",
-    gallery: [rafaelPortifolio1],
   },
   {
     id: "importsgtts",
@@ -238,7 +247,7 @@ function GalleryModal({
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-background/85 p-3 backdrop-blur-sm sm:p-6 lg:p-10"
+      className="fixed inset-0 z-[60] flex cursor-pointer items-center justify-center bg-background/85 p-3 backdrop-blur-sm sm:p-6 lg:p-10"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -246,7 +255,7 @@ function GalleryModal({
         exit={{ opacity: 0, scale: 0.96, y: 12 }}
         transition={{ duration: 0.22, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
-        className="flex h-[88dvh] max-h-[44rem] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl sm:h-full sm:max-h-[92vh]"
+        className="flex h-[88dvh] max-h-[44rem] w-full max-w-6xl cursor-default flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl sm:h-full sm:max-h-[92vh]"
       >
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border/60 px-4 py-3 sm:px-6">
           <h3 className="min-w-0 truncate font-display text-sm font-semibold text-foreground sm:text-base">
