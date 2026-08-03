@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+import PictureLink from "@/assets/picture-link.png";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -94,8 +96,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
       { name: "twitter:description", content: "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dfef7125-c483-4ef5-876d-725e9ad60bc8/id-preview-b393bf5a--17144555-38fe-4666-9b52-7c05b01c2e71.lovable.app-1785496768468.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dfef7125-c483-4ef5-876d-725e9ad60bc8/id-preview-b393bf5a--17144555-38fe-4666-9b52-7c05b01c2e71.lovable.app-1785496768468.png" },
+      { property: "og:image", content: PictureLink },
+      { name: "twitter:image", content: PictureLink },
     ],
     links: [
       {
