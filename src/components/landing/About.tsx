@@ -92,7 +92,7 @@ export function About() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem]">
               <img
                 src={rafaelPhoto}
-                alt="Rafael Neves — Desenvolvedor Front-End no Rio de Janeiro"
+                alt="Rafael Neves — Desenvolvedor Web no Rio de Janeiro"
                 width={1024}
                 height={1280}
                 className="h-full w-full scale-[1.06] object-cover object-top"

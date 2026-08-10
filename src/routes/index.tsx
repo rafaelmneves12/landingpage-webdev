@@ -18,21 +18,21 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites",
+        title: "Rafael Neves — Desenvolvedor Web | Criação de Sites",
       },
       {
         name: "description",
         content:
-          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
+          "Criação de sites institucionais, landing pages, sites voltados para venda e conversão e sistemas personalizados. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       {
         property: "og:title",
-        content: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites",
+        content: "Rafael Neves — Desenvolvedor Web | Criação de Sites",
       },
       {
         property: "og:description",
         content:
-          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
+            "Criação de sites institucionais, landing pages, sites voltados para venda e conversão e sistemas personalizados. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -45,9 +45,9 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          name: "Rafael Neves — Desenvolvedor Front-End Freelancer",
+          name: "Rafael Neves — Desenvolvedor Web",
           description:
-            "Criação de sites institucionais, landing pages, cardápios e catálogos digitais com React, TypeScript e Tailwind CSS.",
+            "Criação de sites institucionais, landing pages, sites voltados para venda e conversão e sistemas personalizados.",
           areaServed: "Brasil",
           telephone: "+55 21 97707-2215",
           email: "rafaelneves.devweb@gmail.com",

@@ -31,7 +31,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <div className="text-center md:text-left">
             <p className="font-display text-base font-semibold text-foreground">Rafael Neves</p>
-            <p className="mt-1 text-sm text-muted-foreground">Desenvolvedor Front-End Freelancer</p>
+            <p className="mt-1 text-sm text-muted-foreground">Desenvolvedor Web</p>
           </div>
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {NAV.map((l) => (
