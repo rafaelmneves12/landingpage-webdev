@@ -5,6 +5,25 @@ import { cn } from "@/lib/utils";
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
+const SAFE_CSS_IDENTIFIER = /^[A-Za-z0-9-]+$/;
+const SAFE_CSS_COLOR =
+  /^(#[0-9A-Fa-f]{3,4}|#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{8}|var\(--[A-Za-z0-9-]+\))$/;
+
+// These values are interpolated into a <style> tag below. Keep the allowlists
+// strict so future callers cannot turn chart configuration into CSS/HTML injection.
+function requireSafeCssIdentifier(value: string, field: string): string {
+  if (!SAFE_CSS_IDENTIFIER.test(value)) {
+    throw new Error(`Invalid ${field}: only letters, numbers, and hyphens are allowed.`);
+  }
+  return value;
+}
+
+function requireSafeCssColor(value: string): string {
+  if (!SAFE_CSS_COLOR.test(value)) {
+    throw new Error("Invalid chart color: use a hex color or a var(--css-token) reference.");
+  }
+  return value;
+}
 
 export type ChartConfig = {
   [k in string]: {
@@ -40,7 +59,8 @@ const ChartContainer = React.forwardRef<
   }
 >(({ id, className, children, config, ...props }, ref) => {
   const uniqueId = React.useId();
-  const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
+  const safeId = requireSafeCssIdentifier(id || uniqueId.replace(/:/g, ""), "chart id");
+  const chartId = `chart-${safeId}`;
 
   return (
     <ChartContext.Provider value={{ config }}>
@@ -62,7 +82,12 @@ const ChartContainer = React.forwardRef<
 ChartContainer.displayName = "Chart";
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
-  const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
+  const colorConfig = Object.entries(config)
+    .filter(([, config]) => config.theme || config.color)
+    .map(
+      ([key, itemConfig]) =>
+        [requireSafeCssIdentifier(key, "chart config key"), itemConfig] as const,
+    );
 
   if (!colorConfig.length) {
     return null;
@@ -78,7 +103,7 @@ ${prefix} [data-chart=${id}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
     const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
+    return color ? `  --color-${key}: ${requireSafeCssColor(color)};` : null;
   })
   .join("\n")}
 }

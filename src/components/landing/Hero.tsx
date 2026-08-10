@@ -1,133 +1,144 @@
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import rafaelPhoto from "@/assets/rafael-neves.png";
+import { AnimatedButton } from "@/components/AnimatedButton";
+
+const NICHES = [
+  "Advogados",
+  "Clínicas de Estética",
+  "Nutricionistas",
+  "Salões de Beleza",
+  "Odontologistas",
+  "Personal Trainers",
+];
 
 function smoothTo(hash: string) {
   const el = document.querySelector(hash);
   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function useTypewriter() {
+  const [nicheIndex, setNicheIndex] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const niche = NICHES[nicheIndex];
+    const complete = characterCount === niche.length;
+    const empty = characterCount === 0;
+    const delay = complete && !deleting ? 1500 : deleting ? 45 : 85;
+
+    const timeout = window.setTimeout(() => {
+      if (complete && !deleting) {
+        setDeleting(true);
+        return;
+      }
+
+      if (empty && deleting) {
+        setDeleting(false);
+        setNicheIndex((current) => (current + 1) % NICHES.length);
+        return;
+      }
+
+      setCharacterCount((current) => current + (deleting ? -1 : 1));
+    }, delay);
+
+    return () => window.clearTimeout(timeout);
+  }, [characterCount, deleting, nicheIndex]);
+
+  return NICHES[nicheIndex].slice(0, characterCount);
+}
+
+function GlowColumn({ side }: { side: "left" | "right" }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`absolute top-1/2 hidden -translate-y-1/2 flex-col gap-3 opacity-60 sm:flex ${
+        side === "left" ? "-left-5 lg:left-3" : "-right-5 lg:right-3"
+      }`}
+    >
+      {[0.3, 0.5, 0.75, 1, 0.75, 0.5, 0.3].map((opacity, index) => (
+        <span
+          key={index}
+          className="block h-12 w-3 rounded-sm bg-primary shadow-[0_0_18px_oklch(0.68_0.16_245/0.7)] lg:h-14 lg:w-4"
+          style={{ opacity }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function Hero() {
+  const typedNiche = useTypewriter();
+
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-28 pb-20 sm:pt-32 md:pt-36"
+      className="stacked-section theme-dark z-0 flex items-center overflow-hidden bg-background py-24 sm:py-28 lg:py-32"
     >
-      {/* Background glow accents */}
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
-        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-accent-cyan/10 blur-[120px]" />
-      </div>
+        aria-hidden="true"
+        className="hero-grid pointer-events-none absolute inset-0 opacity-35"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/3 h-[520px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/12 blur-[130px]"
+      />
+      <GlowColumn side="left" />
+      <GlowColumn side="right" />
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        {/* Copy */}
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            </span>
-            Disponível para novos projetos
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
-          >
-            Sites profissionais que{" "}
-            <span className="text-gradient-blue">geram resultado</span> para o seu negócio.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-          >
-            Sou <span className="text-foreground">Rafael Neves</span>, Desenvolvedor
-            Front-End especializado em criar sites institucionais, landing pages,
-            one-pages, blogs com React, TypeScript e Tailwind CSS.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-8 flex flex-wrap gap-3"
-          >
-            <button
-              onClick={() => smoothTo("#orcamento")}
-              className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:scale-[1.03] hover:brightness-110"
-            >
-              Peça seu orçamento agora
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
-            <button
-              onClick={() => smoothTo("#incluso")}
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/40 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-primary/60 hover:bg-card/70"
-            >
-              Ver o que está incluso
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/40 px-3.5 py-1.5 text-xs text-muted-foreground backdrop-blur"
-          >
-            <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-            Atendimento direto, sem intermediários — contrato claro, sem letras miúdas
-          </motion.div>
-
-        </div>
-
-        {/* Portrait */}
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-5 text-center sm:px-8">
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative mx-auto w-full max-w-md lg:max-w-none"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto inline-flex min-h-9 max-w-full flex-wrap items-center justify-center gap-x-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] font-semibold tracking-[0.14em] text-foreground shadow-lg shadow-black/10 backdrop-blur sm:text-xs"
         >
-          <div
-            aria-hidden
-            className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-2xl"
-          />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-primary/25 bg-card/60 p-1.5 glow-blue">
-            <div className="relative overflow-hidden rounded-[1.35rem]">
-              <img
-                src={rafaelPhoto}
-                alt="Rafael Neves — Desenvolvedor Front-End Freelancer"
-                width={1024}
-                height={1280}
-                className="h-auto w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-background/0 to-background/0" />
+          <span>CRIAÇÃO DE SITE PROFISSIONAL PARA</span>
+          <span className="text-primary">
+            {typedNiche}
+            <span className="typewriter-cursor ml-0.5">|</span>
+          </span>
+        </motion.div>
 
-              {/* Floating badge */}
-              <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1.5 text-xs font-medium text-foreground backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5 text-primary" />
-                Front-End Freelancer
-              </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.08 }}
+          className="mx-auto mt-8 max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] text-foreground sm:text-6xl lg:text-7xl"
+        >
+          <span className="block">Sites profissionais que geram</span>
+          <span className="mt-2 block font-semibold text-muted-foreground">
+            resultado para o seu negócio
+          </span>
+        </motion.h1>
 
-              <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-border/60 bg-background/70 px-4 py-3 backdrop-blur">
-                <p className="text-sm font-semibold text-foreground">Rafael Neves</p>
-                <p className="text-xs text-muted-foreground">
-                  Rio de Janeiro · React · TypeScript · Tailwind
-                </p>
-              </div>
-            </div>
-          </div>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.18 }}
+          className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
+          Sou <span className="font-medium text-foreground">Rafael Neves</span>, Desenvolvedor
+          Front-End especializado em criar sites institucionais, landing pages, one-pages, blogs com
+          React, TypeScript e Tailwind CSS.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.28 }}
+          className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        >
+          <AnimatedButton onClick={() => smoothTo("#orcamento")} variant="primary">
+            Solicitar Orçamento
+          </AnimatedButton>
+          <AnimatedButton
+            onClick={() => smoothTo("#projetos")}
+            variant="dark"
+            className="bg-white/5 backdrop-blur"
+          >
+            Ver Portfólio
+          </AnimatedButton>
         </motion.div>
       </div>
     </section>

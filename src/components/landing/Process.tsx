@@ -1,11 +1,5 @@
 import { motion } from "motion/react";
-import {
-  ClipboardList,
-  Code2,
-  SearchCheck,
-  Rocket,
-  HeartHandshake,
-} from "lucide-react";
+import { ClipboardList, Code2, SearchCheck, Rocket, HeartHandshake } from "lucide-react";
 
 const STEPS = [
   {
@@ -51,14 +45,14 @@ export function Process() {
   return (
     <section
       id="processo"
-      className="relative overflow-hidden py-24 sm:py-28 lg:py-32"
+      className="theme-light relative overflow-hidden bg-background py-24 sm:py-28 lg:py-32"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
             {...fadeInUp}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-primary"
           >
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             Processo de desenvolvimento
@@ -69,8 +63,7 @@ export function Process() {
             transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
             className="mt-5 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl"
           >
-            Como funciona o{" "}
-            <span className="text-gradient-blue">processo</span>
+            Como funciona o <span className="text-gradient-blue">processo</span>
           </motion.h2>
 
           <motion.p
@@ -78,8 +71,7 @@ export function Process() {
             transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
             className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Um passo a passo claro e transparente, do primeiro contato até a
-            publicação do seu site.
+            Um passo a passo claro e transparente, do primeiro contato até a publicação do seu site.
           </motion.p>
         </div>
 
@@ -124,9 +116,7 @@ export function Process() {
                     <span className="text-xs font-semibold tracking-wider text-primary/70">
                       ETAPA {step.number}
                     </span>
-                    <h3 className="mt-1 text-lg font-bold text-foreground">
-                      {step.title}
-                    </h3>
+                    <h3 className="mt-1 text-lg font-bold text-foreground">{step.title}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                       {step.description}
                     </p>

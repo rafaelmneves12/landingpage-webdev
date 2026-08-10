@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 const NAV_LINKS = [
   { href: "#sobre", label: "Sobre" },
@@ -18,10 +19,19 @@ function scrollToHash(hash: string) {
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
+  const previousScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 12);
+      setVisible(currentScrollY === 0 || currentScrollY < previousScrollY.current);
+      previousScrollY.current = currentScrollY;
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -35,10 +45,12 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-[200] transition-all duration-300 ease-out ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      } ${
         scrolled
-          ? "backdrop-blur-xl bg-background/70 border-b border-border/60"
-          : "bg-transparent"
+          ? "border-b border-white/10 bg-[#07111f]/90 shadow-lg shadow-black/10 backdrop-blur-xl"
+          : "border-b border-white/5 bg-[#07111f]/70 backdrop-blur-xl"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -72,14 +84,15 @@ export function Header() {
         </nav>
 
         <div className="hidden shrink-0 md:block">
-          <a
+          <AnimatedButton
             href="#orcamento"
             onClick={(e) => handleClick(e, "#orcamento")}
-            className="inline-flex items-center whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-[1.03] hover:brightness-110 lg:px-4"
+            size="sm"
+            variant="primary"
           >
             <span className="lg:hidden">Orçamento</span>
             <span className="hidden lg:inline">Solicitar Orçamento</span>
-          </a>
+          </AnimatedButton>
         </div>
 
         <button
@@ -111,13 +124,14 @@ export function Header() {
                   {l.label}
                 </a>
               ))}
-              <a
+              <AnimatedButton
                 href="#orcamento"
                 onClick={(e) => handleClick(e, "#orcamento")}
-                className="mt-2 inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
+                variant="primary"
+                className="mt-2 self-center"
               >
                 Solicitar Orçamento
-              </a>
+              </AnimatedButton>
             </div>
           </motion.div>
         )}

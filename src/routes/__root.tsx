@@ -11,8 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { useLenis } from "@/hooks/useLenis";
 
-import PictureLink from "@/assets/picture-link.png";
+import pictureLink from "@/assets/picture-link.png";
 
 function NotFoundComponent() {
   return (
@@ -79,25 +80,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
+      { title: "Rafael Neves — Desenvolvedor Web | Criação de Sites" },
       {
         name: "description",
         content:
-          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
+          "Criação de sites institucionais, landing pages, sites voltados para venda e conversão e sistemas personalizados. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       { name: "author", content: "Rafael Neves" },
-      { property: "og:title", content: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
+      {
+        property: "og:title",
+        content: "Rafael Neves — Desenvolvedor Web | Criação de Sites",
+      },
       {
         property: "og:description",
         content:
-          "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
+          "Criação de sites institucionais, landing pages, sites voltados para venda e conversão e sistemas personalizados. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Rafael Neves — Desenvolvedor Front-End Freelancer | Criação de Sites" },
-      { name: "twitter:description", content: "Criação de sites profissionais, landing pages e catálogos digitais em React e Tailwind. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp." },
-      { property: "og:image", content: PictureLink },
-      { name: "twitter:image", content: PictureLink },
+      {
+        name: "twitter:title",
+        content: "Rafael Neves — Desenvolvedor Web | Criação de Sites",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Criação de sites institucionais, landing pages, sites voltados para venda e conversão e sistemas personalizados. Atendimento direto com o desenvolvedor. Peça seu orçamento pelo WhatsApp.",
+      },
+      { property: "og:image", content: pictureLink },
+      { name: "twitter:image", content: pictureLink },
     ],
     links: [
       {
@@ -135,6 +146,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useLenis();
 
   return (
     <QueryClientProvider client={queryClient}>

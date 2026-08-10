@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const NAV = [
@@ -10,7 +10,11 @@ const NAV = [
 ];
 
 const SOCIALS = [
-  { icon: Linkedin, href: "https://linkedin.com/in/rafael-mattos-neves-97a180274", label: "LinkedIn" },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/rafaelneves.devweb/",
+    label: "Instagram",
+  },
   { icon: Mail, href: "mailto:rafaelneves.devweb@gmail.com", label: "Email" },
   { icon: WhatsAppIcon, href: "https://wa.me/5521977072215", label: "WhatsApp" },
 ];
@@ -22,7 +26,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-border/60 bg-background/60 py-12">
+    <footer className="theme-dark border-t border-border/60 bg-background py-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <div className="text-center md:text-left">
@@ -60,7 +64,10 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-10 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground">
-          © 2026 Rafael Neves — Todos os direitos reservados
+          <p>© 2026 Rafael Neves — Todos os direitos reservados</p>
+          <a href="/privacidade" className="mt-2 inline-flex transition-colors hover:text-primary">
+            Aviso de Privacidade
+          </a>
         </div>
       </div>
     </footer>

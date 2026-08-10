@@ -14,7 +14,7 @@ export function FloatingWhatsApp() {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.6, duration: 0.3 }}
-      className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40 sm:bottom-6 sm:right-6"
+      className="fixed bottom-5 right-5 z-[190] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40 sm:bottom-6 sm:right-6"
     >
       <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#25D366] opacity-40" />
       <WhatsAppIcon className="h-7 w-7" />

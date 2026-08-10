@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 const ITEMS = [
   "Desenvolvimento personalizado do website",
@@ -9,7 +10,6 @@ const ITEMS = [
   "Configuração inicial do domínio e hospedagem",
   "Certificado SSL (HTTPS)",
   "Integração com WhatsApp",
-  "Formulário de contato funcional",
   "Produção e organização dos textos",
   "Otimização de imagens",
   "Testes em diferentes navegadores e dispositivos",
@@ -28,7 +28,7 @@ export function Incluso() {
   return (
     <section
       id="incluso"
-      className="relative overflow-hidden py-24 sm:py-28 lg:py-32"
+      className="theme-light relative overflow-hidden bg-background py-24 sm:py-28 lg:py-32"
     >
       {/* Subtle top border glow */}
       <div
@@ -41,10 +41,10 @@ export function Incluso() {
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
             {...fadeInUp}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-primary"
           >
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            O que está incluso
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />O que está
+            incluso
           </motion.div>
 
           <motion.h2
@@ -52,8 +52,7 @@ export function Incluso() {
             transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
             className="mt-5 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl"
           >
-            Tudo isso já está{" "}
-            <span className="text-gradient-blue">incluso no seu projeto</span>
+            Tudo isso já está <span className="text-gradient-blue">incluso no seu projeto</span>
           </motion.h2>
 
           <motion.p
@@ -61,8 +60,7 @@ export function Incluso() {
             transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
             className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Transparência total: veja exatamente o que você recebe ao fechar
-            comigo.
+            Transparência total: veja exatamente o que você recebe ao fechar comigo.
           </motion.p>
         </div>
 
@@ -97,16 +95,11 @@ export function Incluso() {
           className="mt-12 flex flex-col items-center gap-6 rounded-3xl border border-primary/20 bg-primary/5 px-6 py-8 text-center sm:px-10 sm:py-10"
         >
           <p className="max-w-2xl text-base leading-relaxed text-foreground sm:text-lg">
-            Sem surpresas no meio do caminho — tudo isso já está no valor
-            combinado.
+            Sem surpresas no meio do caminho — tudo isso já está no valor combinado.
           </p>
-          <a
-            href="#orcamento"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30"
-          >
+          <AnimatedButton href="#orcamento" variant="primary">
             Solicitar meu orçamento
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          </AnimatedButton>
         </motion.div>
       </div>
     </section>

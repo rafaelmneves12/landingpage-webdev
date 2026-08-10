@@ -1,6 +1,10 @@
 {
   "name": "tanstack_start_ts",
   "private": true,
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -50,6 +54,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
+    "lenis": "^1.3.26",
     "lucide-react": "^0.575.0",
     "motion": "^12.43.0",
     "react": "^19.2.0",
@@ -84,5 +89,9 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^8.1.5"
+  },
+  "overrides": {
+    "js-yaml": ">=4.3.1",
+    "nanoid": ">=3.3.17"
   }
 }

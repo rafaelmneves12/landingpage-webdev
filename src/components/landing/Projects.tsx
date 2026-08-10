@@ -1,13 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Eye,
-  X,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Eye, X } from "lucide-react";
 import importsgtts from "@/assets/importsgtts-thumbnail.png";
 import importsgtts1 from "@/assets/importsgtts-picture-1.png";
 
@@ -17,9 +10,6 @@ import zenavra2 from "@/assets/zenavra-picture-2.png";
 
 import rayaneSocialMidia from "@/assets/portifolio-thumbnail.png";
 import rayaneSocialMidia1 from "@/assets/portifolio-picture-1.png";
-
-import rafaelPortifolio from "@/assets/rafael-portifolio-thumbnail.png";
-import rafaelPortifolio1 from "@/assets/rafael-portifolio-picture-1.png";
 
 import saborEmCasaBlog from "@/assets/culinaria-thumbnail.png";
 import saborEmCasaBlog1 from "@/assets/culinaria-picture-1.png";
@@ -39,8 +29,6 @@ import vaultCripto6 from "@/assets/vault-picture-6.png";
 import clinicaEstetica from "@/assets/clinica-estetica-thumbnail.png";
 import clinicaEstetica1 from "@/assets/clinica-estetica-picture-1.png";
 
-
-
 export type Project = {
   id: string;
   title: string;
@@ -57,7 +45,7 @@ export type Project = {
 const PROJECTS: Project[] = [
   {
     id: "clinica-estetica",
-    title: "Landing Page para Clinica de Estética",
+    title: "Landing Page - Clinica de Estética",
     tag: "React",
     date: "Ago 2026",
     cover: clinicaEstetica,
@@ -78,7 +66,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "sabor-em-casa-blog",
-    title: "Blog Culinário de Receitas",
+    title: "Site Institucional - Blog Culinário",
     tag: "React",
     date: "Ago 2026",
     cover: saborEmCasaBlog,
@@ -90,15 +78,21 @@ const PROJECTS: Project[] = [
       "Integração com vídeos do YouTube para acompanhamento do preparo",
       "Página institucional apresentando a história e propósito do blog",
       "Design leve, moderno e agradável com tema claro",
-      "Carregamento rápido e navegação intuitiva"
+      "Carregamento rápido e navegação intuitiva",
     ],
     technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
     url: "https://blogculinariaprofessional.vercel.app/",
-    gallery: [saborEmCasaBlog1, saborEmCasaBlog2, saborEmCasaBlog3, saborEmCasaBlog4, saborEmCasaBlog5],
+    gallery: [
+      saborEmCasaBlog1,
+      saborEmCasaBlog2,
+      saborEmCasaBlog3,
+      saborEmCasaBlog4,
+      saborEmCasaBlog5,
+    ],
   },
   {
     id: "rayane-social-media",
-    title: "Landing Page para Social Midia",
+    title: "Landing Page - Social Media",
     tag: "React",
     date: "Jul 2026",
     cover: rayaneSocialMidia,
@@ -119,31 +113,8 @@ const PROJECTS: Project[] = [
     gallery: [rayaneSocialMidia1],
   },
   {
-    id: "rafael-portifolio",
-    title: "One Page para Portifólio Profissional",
-    tag: "React",
-    date: "Jul 2026",
-    cover: rafaelPortifolio,
-    description:
-      "Portfólio profissional moderno em tema dark, desenvolvido para destacar a trajetória, competências e projetos do profissional com design sofisticado e foco em credibilidade.",
-    highlights: [
-      "Design moderno com tema Dark e identidade visual tecnológica",
-      "Header lateral (Sidebar) com navegação por menu âncora animado",
-      "Sessão principal com apresentação profissional e foto de destaque",
-      "Botão para download do currículo integrado ao site",
-      "Ícones de redes sociais com links para os principais canais profissionais",
-      "Exibição das tecnologias utilizadas com níveis de proficiência",
-      "Galeria de projetos desenvolvidos com informações e tecnologias aplicadas",
-      "Área dedicada a certificados profissionais e cursos concluídos",
-      "Sessão de idiomas com níveis de proficiência apresentados de forma visual",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://premium-portfolio-base.vercel.app/",
-    gallery: [rafaelPortifolio1],
-  },
-  {
     id: "vault-cripto",
-    title: "Plataforma Web para Gestão e Monitoramento de Criptomoedas",
+    title: "Sistema Personalizado - Carteira de Criptomoedas",
     tag: "React",
     date: "Jul 2026",
     cover: vaultCripto,
@@ -163,7 +134,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "importsgtts",
-    title: "Ecommerce de Moda Masculina (ImportsGtts)",
+    title: "Vendas & Conversão - Ecommerce Moda Masculina",
     tag: "WordPress",
     date: "Dez 2023",
     cover: importsgtts,
@@ -176,12 +147,12 @@ const PROJECTS: Project[] = [
       "Alto desempenho de carregamento",
     ],
     technologies: ["WordPress", "WooCommerce", "Elementor", "CSS"],
-    url: "",
+    url: "nada",
     gallery: [importsgtts1],
   },
   {
     id: "zenavra",
-    title: "Ecommerce de Moda Feminina (Zenavra)",
+    title: "Vendas & Conversão - Ecommerce Moda Feminina",
     tag: "Shopify",
     date: "Mai 2026",
     cover: zenavra,
@@ -194,27 +165,18 @@ const PROJECTS: Project[] = [
       "Formulários de contato e FAQs",
     ],
     technologies: ["Shopify", "Liquid", "CSS", "Apps"],
-    url: "",
+    url: "nada",
     gallery: [zenavra1, zenavra2],
   },
 ];
 
-function GalleryModal({
-  project,
-  onClose,
-}: {
-  project: Project;
-  onClose: () => void;
-}) {
+function GalleryModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [index, setIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const total = project.gallery.length;
 
   const next = useCallback(() => setIndex((i) => (i + 1) % total), [total]);
-  const prev = useCallback(
-    () => setIndex((i) => (i - 1 + total) % total),
-    [total],
-  );
+  const prev = useCallback(() => setIndex((i) => (i - 1 + total) % total), [total]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -335,7 +297,7 @@ export function Projects() {
   return (
     <section
       id="projetos"
-      className="relative overflow-hidden py-24 sm:py-28 lg:py-32"
+      className="theme-dark relative overflow-hidden bg-background py-24 sm:py-28 lg:py-32"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -346,7 +308,7 @@ export function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-primary"
           >
             <span className="inline-flex h-2 w-2 rounded-full bg-primary" />
             Portfólio
@@ -402,13 +364,6 @@ export function Projects() {
                   className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
-                <span className="absolute left-3 top-3 rounded-md border border-primary/30 bg-background/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur">
-                  {project.tag}
-                </span>
-                <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-md border border-border/60 bg-background/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground backdrop-blur">
-                  <Calendar className="h-3 w-3" />
-                  {project.date}
-                </span>
               </button>
 
               <div className="flex flex-1 flex-col p-5">
@@ -419,30 +374,7 @@ export function Projects() {
                   {project.description}
                 </p>
 
-                <ul className="mt-4 space-y-1.5">
-                  {project.highlights.map((h) => (
-                    <li
-                      key={h}
-                      className="flex items-start gap-2 text-sm text-muted-foreground"
-                    >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
-                      <span className="leading-relaxed">{h}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-4 mb-4 flex flex-wrap gap-2">
-                  {project.technologies.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md border border-border/60 px-2 py-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/60 pt-4">
+                <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/60 pt-5">
                   <a
                     href={project.url}
                     target="_blank"
@@ -468,9 +400,7 @@ export function Projects() {
       </div>
 
       <AnimatePresence>
-        {active && (
-          <GalleryModal project={active} onClose={() => setActive(null)} />
-        )}
+        {active && <GalleryModal project={active} onClose={() => setActive(null)} />}
       </AnimatePresence>
     </section>
   );

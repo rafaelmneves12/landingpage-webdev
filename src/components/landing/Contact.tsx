@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Linkedin, ShieldCheck, Clock, BadgeCheck } from "lucide-react";
-import { WhatsAppIcon } from "./WhatsAppIcon";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 const WA_URL = "https://wa.me/5521977072215";
 const EMAIL = "rafaelneves.devweb@gmail.com";
@@ -15,12 +15,16 @@ const contacts = [
   { icon: Phone, label: "+55 21 97707-2215", href: "tel:+5521977072215" },
   { icon: Mail, label: EMAIL, href: `mailto:${EMAIL}` },
   { icon: MapPin, label: "Rio de Janeiro, Brasil" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/rafael-mattos-neves-97a180274" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/rafael-mattos-neves-97a180274",
+  },
 ];
 
 export function Contact() {
   return (
-    <section id="contato" className="relative py-24 sm:py-32">
+    <section id="contato" className="theme-dark relative bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +37,8 @@ export function Contact() {
             Vamos construir o site do <span className="text-gradient-blue">seu negócio</span>?
           </h2>
           <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-            Estou disponível para novos projetos e respondo rapidamente. Escolha o canal que preferir.
+            Estou disponível para novos projetos e respondo rapidamente. Escolha o canal que
+            preferir.
           </p>
         </motion.div>
 
@@ -44,15 +49,15 @@ export function Contact() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <a
+          <AnimatedButton
             href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/30 transition-transform hover:scale-[1.03] hover:brightness-110 sm:w-auto"
+            variant="primary"
+            className="self-center"
           >
-            <WhatsAppIcon className="h-5 w-5" />
             Chamar no WhatsApp
-          </a>
+          </AnimatedButton>
           <a
             href={`mailto:${EMAIL}`}
             className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-secondary/40 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary sm:w-auto"
@@ -82,7 +87,11 @@ export function Contact() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
               >
                 {c.href ? (
-                  <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                  >
                     {content}
                   </a>
                 ) : (
