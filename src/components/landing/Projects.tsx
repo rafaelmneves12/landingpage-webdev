@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, ExternalLink, Eye, X } from "lucide-react";
 import importsgtts from "@/assets/importsgtts-thumbnail.png";
@@ -185,21 +186,41 @@ function GalleryModal({ project, onClose }: { project: Project; onClose: () => v
       if (e.key === "ArrowLeft") prev();
     };
     document.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
+    const scrollY = window.scrollY;
+    const previousBodyStyles = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+    };
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyStyles.overflow;
+      document.body.style.position = previousBodyStyles.position;
+      document.body.style.top = previousBodyStyles.top;
+      document.body.style.width = previousBodyStyles.width;
+      window.scrollTo({ top: scrollY, behavior: "instant" });
     };
   }, [onClose, next, prev]);
 
   useEffect(() => {
-    if (window.matchMedia("(max-width: 639px)").matches) {
-      scrollContainerRef.current?.scrollTo({ top: 0 });
-    }
-  }, [index]);
+    scrollContainerRef.current?.scrollTo({ top: 0, behavior: "instant" });
+  }, [index, project.id]);
 
-  return (
+  useEffect(() => {
+    setIndex(0);
+  }, [project.id]);
+
+  return createPortal(
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -234,6 +255,7 @@ function GalleryModal({ project, onClose }: { project: Project; onClose: () => v
 
         <div
           ref={scrollContainerRef}
+          data-lenis-prevent
           className="relative min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain bg-background/40 [-webkit-overflow-scrolling:touch]"
         >
           <AnimatePresence mode="wait">
@@ -287,7 +309,8 @@ function GalleryModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
         )}
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
 

@@ -13,7 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { useLenis } from "@/hooks/useLenis";
 
-import pictureLink from "@/assets/picture-link.png";
+import pictureLink from "@/assets/picture-link.jpg";
 
 function NotFoundComponent() {
   return (
