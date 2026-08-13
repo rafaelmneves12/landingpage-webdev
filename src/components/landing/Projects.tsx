@@ -230,7 +230,7 @@ function GalleryModal({ project, onClose }: { project: Project; onClose: () => v
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
-      className="fixed inset-0 z-[60] flex cursor-pointer items-center justify-center bg-background/85 p-3 backdrop-blur-sm sm:p-6 lg:p-10"
+      className="fixed inset-0 z-[999] flex cursor-pointer items-center justify-center bg-background/85 p-3 backdrop-blur-sm sm:p-6 lg:p-10"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -256,7 +256,7 @@ function GalleryModal({ project, onClose }: { project: Project; onClose: () => v
         <div
           ref={scrollContainerRef}
           data-lenis-prevent
-          className="relative min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain bg-background/40 [-webkit-overflow-scrolling:touch]"
+          className="relative flex min-h-0 flex-1 touch-pan-y flex-col overflow-y-auto overscroll-contain bg-background/40 [-webkit-overflow-scrolling:touch]"
         >
           <AnimatePresence mode="wait">
             <motion.img
@@ -268,7 +268,7 @@ function GalleryModal({ project, onClose }: { project: Project; onClose: () => v
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               loading="lazy"
-              className="block w-full"
+              className="my-auto block w-full shrink-0"
             />
           </AnimatePresence>
         </div>
