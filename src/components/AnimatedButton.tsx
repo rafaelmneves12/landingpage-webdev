@@ -21,6 +21,10 @@ type AnimatedNativeButtonProps = CommonProps &
 
 type AnimatedButtonProps = AnimatedAnchorProps | AnimatedNativeButtonProps;
 
+function isAnchorProps(props: AnimatedButtonProps): props is AnimatedAnchorProps {
+  return typeof props.href === "string";
+}
+
 const VARIANTS = {
   primary:
     "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:brightness-105",
@@ -86,7 +90,7 @@ export function AnimatedButton(props: AnimatedButtonProps) {
     </ButtonContent>
   );
 
-  if ("href" in props && props.href) {
+  if (isAnchorProps(props)) {
     const {
       variant: _variant,
       size: _size,

@@ -1,13 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, ExternalLink, Eye, X } from "lucide-react";
-import importsgtts from "@/assets/importsgtts-thumbnail.png";
-import importsgtts1 from "@/assets/importsgtts-picture-1.png";
-
-import zenavra from "@/assets/zenavra-thumbnail.png";
-import zenavra1 from "@/assets/zenavra-picture-1.png";
-import zenavra2 from "@/assets/zenavra-picture-2.png";
+import { ChevronLeft, ChevronRight, ExternalLink, Eye, LockKeyhole, X } from "lucide-react";
 
 import rayaneSocialMidia from "@/assets/portifolio-thumbnail.png";
 import rayaneSocialMidia1 from "@/assets/portifolio-picture-1.png";
@@ -18,6 +12,12 @@ import saborEmCasaBlog2 from "@/assets/culinaria-picture-2.png";
 import saborEmCasaBlog3 from "@/assets/culinaria-picture-3.png";
 import saborEmCasaBlog4 from "@/assets/culinaria-picture-4.png";
 import saborEmCasaBlog5 from "@/assets/culinaria-picture-5.png";
+
+import clinicEsteticaLanding from "@/assets/clinica-estetica-landing-thumbnail.png";
+import clinicEsteticaLanding1 from "@/assets/clinica-estetica-landing-picture-1.png";
+
+import advogado from "@/assets/advogado-thumbnail.png";
+import advogado1 from "@/assets/advogado-picture-1.png";
 
 import vaultCripto from "@/assets/vault-thumbnail.png";
 import vaultCripto1 from "@/assets/vault-picture-1.png";
@@ -30,15 +30,10 @@ import vaultCripto6 from "@/assets/vault-picture-6.png";
 import clinicaEstetica from "@/assets/clinica-estetica-thumbnail.png";
 import clinicaEstetica1 from "@/assets/clinica-estetica-picture-1.png";
 
-export type Project = {
+type Project = {
   id: string;
   title: string;
-  tag: string;
-  date: string;
   cover: string;
-  description: string;
-  highlights: string[];
-  technologies: string[];
   url: string;
   gallery: string[];
 };
@@ -46,128 +41,47 @@ export type Project = {
 const PROJECTS: Project[] = [
   {
     id: "clinica-estetica",
-    title: "Landing Page - Clinica de Estética",
-    tag: "React",
-    date: "Ago 2026",
+    title: "Site Institucional - Clinica de Estética",
     cover: clinicaEstetica,
-    description:
-      "Landing Page moderna e totalmente responsivo para clínica de estética, desenvolvido para fortalecer a presença digital da marca, apresentar os tratamentos de forma estratégica e proporcionar uma experiência sofisticada focada em conversão de novos clientes.",
-    highlights: [
-      "Design sofisticado com identidade visual elegante para a marca",
-      "Apresentação completa da clínica, equipe, tratamentos e resultados",
-      "Galeria de imagens e cards comparativos de antes e depois",
-      "Sessão de avaliações reais para fortalecer a credibilidade da marca",
-      "Cards detalhados com informações sobre cada procedimento",
-      "Integração direta com WhatsApp para atendimento rápido",
-      "FAQ e formulário de contato para geração de novos leads",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://aureaclinicprofessional.vercel.app/",
+    url: "https://aureaclinicestetica.vercel.app/",
     gallery: [clinicaEstetica1],
   },
   {
     id: "sabor-em-casa-blog",
     title: "Site Institucional - Blog Culinário",
-    tag: "React",
-    date: "Ago 2026",
     cover: saborEmCasaBlog,
-    description:
-      "Blog culinário moderno e totalmente responsivo, desenvolvido para proporcionar uma navegação intuitiva entre receitas, categorias e conteúdos gastronômicos, oferecendo uma experiência agradável tanto para leitores quanto para apaixonados por culinária.",
-    highlights: [
-      "Sistema de categorias e filtros para facilitar a busca por receitas",
-      "Receitas completas com ingredientes e modo de preparo detalhado",
-      "Integração com vídeos do YouTube para acompanhamento do preparo",
-      "Página institucional apresentando a história e propósito do blog",
-      "Design leve, moderno e agradável com tema claro",
-      "Carregamento rápido e navegação intuitiva",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://blogculinariaprofessional.vercel.app/",
+    url: "https://saboremcasablog.vercel.app/",
     gallery: [
-      saborEmCasaBlog1,
-      saborEmCasaBlog2,
-      saborEmCasaBlog3,
-      saborEmCasaBlog4,
-      saborEmCasaBlog5,
+      saborEmCasaBlog1, saborEmCasaBlog2, saborEmCasaBlog3, saborEmCasaBlog4, saborEmCasaBlog5,
     ],
+  },
+  {
+    id: "landing-page-clinica-estetica",
+    title: "Landing Page - Clinica Estética",
+    cover: clinicEsteticaLanding,
+    url: "https://essenciaestetica.vercel.app/",
+    gallery: [clinicEsteticaLanding1],
+  },
+  {
+    id: "landing-page-advogado",
+    title: "Landing Page - Escritório de Advocacia",
+    cover: advogado,
+    url: "https://advogadosmattoseassociados.vercel.app/",
+    gallery: [advogado1],
   },
   {
     id: "rayane-social-media",
     title: "Landing Page - Social Media",
-    tag: "React",
-    date: "Jul 2026",
     cover: rayaneSocialMidia,
-    description:
-      "Landing page moderna e totalmente responsiva para Social Media, desenvolvida com foco em captação de clientes, experiência do usuário e alta conversão.",
-    highlights: [
-      "Design moderno com tema claro e paleta de cores personalizada",
-      "Apresentação profissional com sessão Sobre Mim, foto e descrição",
-      "Galeria dos trabalhos mais recentes para demonstrar experiência",
-      "Exibição de insights e resultados reais obtidos em projetos",
-      "Sessão de avaliações autênticas para fortalecer a credibilidade",
-      "Área dedicada às ferramentas e plataformas utilizadas no dia a dia",
-      "Integração direta com WhatsApp para atendimento imediato",
-      "Chamada para ação (CTA) estratégica para geração de novos clientes",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://portifolio-premium-social-media.vercel.app/",
+    url: "https://rayanesalessocialmedia.vercel.app/",
     gallery: [rayaneSocialMidia1],
   },
   {
     id: "vault-cripto",
     title: "Sistema Personalizado - Carteira de Criptomoedas",
-    tag: "React",
-    date: "Jul 2026",
     cover: vaultCripto,
-    description:
-      "Plataforma multipáginas desenvolvida para investidores de criptomoedas, oferecendo monitoramento em tempo real do mercado, gerenciamento de portfólio e análise de ativos através de consumo de API REST, com foco em desempenho, segurança e experiência do usuário.",
-    highlights: [
-      "Consumo de API REST para atualização em tempo real do mercado",
-      "Sistema completo de autenticação com Login e Registro",
-      "Dashboard privado para gerenciamento dos investimentos",
-      "Portfólio personalizado com controle de ativos, valores investidos e patrimônio",
-      "Watchlist para acompanhamento das criptomoedas favoritas",
-      "Análise de volatilidade e desempenho do mercado em tempo real",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Lovable", "Codex"],
-    url: "https://vaultcriptoprofessional.vercel.app/",
+    url: "https://vaultcryptowallet.vercel.app/",
     gallery: [vaultCripto1, vaultCripto2, vaultCripto3, vaultCripto4, vaultCripto5, vaultCripto6],
-  },
-  {
-    id: "importsgtts",
-    title: "Vendas & Conversão - Ecommerce Moda Masculina",
-    tag: "WordPress",
-    date: "Dez 2023",
-    cover: importsgtts,
-    description:
-      "Website moderno e totalmente responsivo em WooCommerce, voltado ao segmento de moda masculina, com abordagem mobile-first e foco em conversão.",
-    highlights: [
-      "WooCommerce customizado com Elementor",
-      "Integração com gateways de pagamento",
-      "Banners estratégicos e otimização de conversão",
-      "Alto desempenho de carregamento",
-    ],
-    technologies: ["WordPress", "WooCommerce", "Elementor", "CSS"],
-    url: "nada",
-    gallery: [importsgtts1],
-  },
-  {
-    id: "zenavra",
-    title: "Vendas & Conversão - Ecommerce Moda Feminina",
-    tag: "Shopify",
-    date: "Mai 2026",
-    cover: zenavra,
-    description:
-      "Loja virtual moderna e responsiva em Shopify, voltada para o segmento de beleza feminina, com navegação intuitiva e experiência de compra premium.",
-    highlights: [
-      "UI/UX moderna e carregamento otimizado",
-      "Páginas de produtos personalizadas",
-      "Variantes e amostras de cores (swatches)",
-      "Formulários de contato e FAQs",
-    ],
-    technologies: ["Shopify", "Liquid", "CSS", "Apps"],
-    url: "nada",
-    gallery: [zenavra1, zenavra2],
   },
 ];
 
@@ -370,39 +284,50 @@ export function Projects() {
                 delay: i * 0.1,
                 ease: "easeOut",
               }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/40 backdrop-blur transition-colors hover:border-primary/40 hover:bg-card/60"
+              className="group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-xl shadow-black/20 transition-colors hover:border-primary/40"
             >
-              <button
-                type="button"
-                onClick={() => setActive(project)}
-                aria-label={`Visualizar galeria de ${project.title}`}
-                className="relative block w-full overflow-hidden"
-              >
-                <img
-                  src={project.cover}
-                  alt={`Capa do projeto ${project.title}`}
-                  width={1280}
-                  height={800}
-                  loading="lazy"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
-              </button>
+              <div className="flex h-12 items-center gap-3 border-b border-slate-300/70 bg-slate-100 px-3 shadow-sm sm:px-4">
+                <div className="flex shrink-0 items-center gap-1.5" aria-hidden="true">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                </div>
+                <div className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-slate-300/80 bg-white/90 px-3 py-1.5 text-slate-500 shadow-inner">
+                  <LockKeyhole className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="truncate text-[11px] font-medium sm:text-xs">
+                    {project.title}
+                  </span>
+                </div>
+              </div>
 
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-display text-lg font-semibold leading-snug text-foreground">
-                  {project.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
-                </p>
+              <div className="relative overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setActive(project)}
+                  aria-label={`Visualizar galeria de ${project.title}`}
+                  className="block w-full overflow-hidden"
+                >
+                  <img
+                    src={project.cover}
+                    alt={`Capa do projeto ${project.title}`}
+                    width={1280}
+                    height={800}
+                    loading="lazy"
+                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </button>
 
-                <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/60 pt-5">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/80 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+
+                <motion.div
+                  initial={false}
+                  className="absolute inset-x-3 bottom-3 flex translate-y-0 items-center justify-between gap-3 rounded-xl border border-white/10 bg-background/85 px-3 py-2.5 opacity-100 shadow-lg backdrop-blur-md transition-[opacity,transform] duration-300 ease-out sm:pointer-events-none sm:translate-y-2 sm:opacity-0 sm:group-hover:pointer-events-auto sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-focus-within:pointer-events-auto sm:group-focus-within:translate-y-0 sm:group-focus-within:opacity-100"
+                >
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    className="inline-flex items-center gap-2 text-xs font-medium text-foreground transition-colors hover:text-primary"
                   >
                     <ExternalLink className="h-4 w-4" />
                     Acessar
@@ -410,12 +335,12 @@ export function Projects() {
                   <button
                     type="button"
                     onClick={() => setActive(project)}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-80"
+                    className="inline-flex items-center gap-2 text-xs font-medium text-primary transition-opacity hover:opacity-80"
                   >
                     <Eye className="h-4 w-4" />
                     Visualizar
                   </button>
-                </div>
+                </motion.div>
               </div>
             </motion.article>
           ))}
