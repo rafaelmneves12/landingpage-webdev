@@ -52,7 +52,11 @@ const PROJECTS: Project[] = [
     cover: saborEmCasaBlog,
     url: "https://saboremcasablog.vercel.app/",
     gallery: [
-      saborEmCasaBlog1, saborEmCasaBlog2, saborEmCasaBlog3, saborEmCasaBlog4, saborEmCasaBlog5,
+      saborEmCasaBlog1,
+      saborEmCasaBlog2,
+      saborEmCasaBlog3,
+      saborEmCasaBlog4,
+      saborEmCasaBlog5,
     ],
   },
   {
@@ -317,11 +321,11 @@ export function Projects() {
                   />
                 </button>
 
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/80 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/80 to-transparent opacity-70 transition-opacity duration-[250ms] ease-in-out group-hover:opacity-100" />
 
                 <motion.div
                   initial={false}
-                  className="absolute inset-x-3 bottom-3 flex translate-y-0 items-center justify-between gap-3 rounded-xl border border-white/10 bg-background/85 px-3 py-2.5 opacity-100 shadow-lg backdrop-blur-md transition-[opacity,transform] duration-300 ease-out sm:pointer-events-none sm:translate-y-2 sm:opacity-0 sm:group-hover:pointer-events-auto sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-focus-within:pointer-events-auto sm:group-focus-within:translate-y-0 sm:group-focus-within:opacity-100"
+                  className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-background/85 px-3 py-2.5 opacity-100 shadow-lg backdrop-blur-md transition-opacity duration-[250ms] ease-in-out sm:pointer-events-none sm:opacity-0 sm:group-hover:pointer-events-auto sm:group-hover:opacity-100 sm:group-focus-within:pointer-events-auto sm:group-focus-within:opacity-100"
                 >
                   <a
                     href={project.url}
